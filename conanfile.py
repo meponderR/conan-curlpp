@@ -4,7 +4,7 @@ from conans import ConanFile, CMake, tools
 class CurlppConan(ConanFile):
     name = "curlpp"
     version = "0.8.1"
-    url = "https://github.com/SteffenL/conan-curlpp"
+    url = "https://github.com/meponderR/conan-curlpp"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
     default_options = "shared=False"
@@ -15,7 +15,7 @@ class CurlppConan(ConanFile):
 
     def source(self):
         git = tools.Git(folder=self.source_dir)
-        git.clone("https://github.com/jpbarrette/curlpp.git", "v" + self.version)
+        git.clone("https://github.com/jpbarrette/curlpp.git")
 
     def build(self):
         with tools.chdir(self.source_dir):
@@ -50,4 +50,4 @@ class CurlppConan(ConanFile):
             self.cpp_info.libs = ["curlpp"]
 
     def requirements(self):
-        self.requires("libcurl/[>=7.64.1]")
+        self.requires("libcurl/[>=7.73.0]")
